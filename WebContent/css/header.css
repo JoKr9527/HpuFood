@@ -1,0 +1,27 @@
+@charset "UTF-8";
+ header {
+ 	position:fixed;
+ 	top:20px;
+ 	height:100px;
+ 	width:100%;
+ }
+#head_Content {
+	width:80%;
+	margin:0 auto;
+	margin-top: 20px;
+}
+	
+header nav{
+	position:relative;
+	display: inline;
+	left: 85%;
+}
+#head_Content hr {
+	margin-top:35px;
+	width:100%;
+}
+
+header nav a {
+	text-decoration: none;
+	color:	#000000;
+}

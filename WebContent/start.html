@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>demo of starof</title>
+ <style>
+ ul{padding:0;margin: 0;}
+ li{list-style: none;}
+ /*星星评分*/
+ .scoremark{width:154px;position:relative;margin-top:50px;}
+ .scoremark .score {
+  float: right;
+  display: block;
+  margin: 0 0 0 10px;
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: bold;
+  color: #f70;
+ }
+ .scoremark .star {
+  float: right;
+  display: block;
+  position: relative;
+  width: 116px;
+  height: 20px;
+  background: url(images/star.png) no-repeat 0px -20px;
+ }
+ .scoremark .ystar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 116px;
+  height: 20px;
+  background: url(images/star.png) no-repeat 0px 0px;
+ }
+ .scoremark .star ul {
+  width: 120px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+ }
+ .scoremark .star ul:hover {
+  background: url(images/star.png) no-repeat 0px -20px;
+ }
+ .scoremark .star li {
+  float: left;
+  width: 24px;
+  height: 20px;
+ }
+ .scoremark .star li a {
+  display: block;
+  width: 24px;
+  height: 20px;
+  overflow: hidden;
+  text-indent: -9999px;
+  position: absolute;
+  z-index: 5;
+ }
+ .scoremark .star li a:hover {
+  background: url(images/star.png) no-repeat 0px 0px;
+  z-index: 3;
+  left: 0
+ }
+ .scoremark .star a.one-star {
+  left: 0;
+ }
+ .scoremark .star a.one-star:hover {
+  width: 24px
+ }
+ .scoremark .star a.two-stars {
+  left: 24px;
+ }
+ .scoremark .star a.two-stars:hover {
+  width: 48px
+ }
+ .scoremark .star a.three-stars {
+  left: 48px;
+ }
+ .scoremark .star a.three-stars:hover {
+  width: 72px
+ }
+ .scoremark .star a.four-stars {
+  left: 72px;
+ }
+ .scoremark .star a.four-stars:hover {
+  width: 96px
+ }
+ .scoremark .star a.five-stars {
+  left: 96px;
+ }
+ .scoremark .star a.five-stars:hover {
+  width: 120px;
+ }
+ .scoremark .tips {
+  position: absolute;
+  top: -28px;
+  left: 0;
+  width: 40px;
+  height: 21px;
+  color: #333;
+  line-height: 20px;
+  padding: 0 0 5px 0;
+  text-align: center;
+  background: url(images/ico.png) no-repeat;
+  z-index: 6;
+  font-size: 12px;
+ }
+ </style>
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+</head>
+<body>
+ <div id="scoremark" class="scoremark scores">
+      <em class="score">8.0</em>
+      <div class="star">
+       <div class="ystar" style="width:80%"></div>
+       <ul>
+        <li><a href="javascript:void(0)" data-name="很差" class="one-star">1</a></li>
+        <li><a href="javascript:void(0)" data-name="较差" class="two-stars">2</a></li>
+        <li><a href="javascript:void(0)" data-name="一般" class="three-stars">3</a></li>
+        <li><a href="javascript:void(0)" data-name="较好" class="four-stars">4</a></li>
+        <li><a href="javascript:void(0)" data-name="很好" class="five-stars">5</a></li>
+       </ul>
+      </div>
+      <div style="left: 0px; display: none;" class="tips"></div>
+   </div>
+<script>
+//星星评分
+starScore($(".scoremark"));
+function starScore(star){
+ star.find(".star ul li a").mouseenter(function(){
+  var txt = $(this).attr("data-name");
+  var x = $(this).parent("li").index();
+  star.find(".tips").html(txt).css("left",-6+x*24).show();
+ });
+ star.find(".star ul li a").mouseleave(function(){
+  star.find(".tips").html("").css("left",0).hide();
+ }); 
+}
+</script>
+</body>
+</html>
